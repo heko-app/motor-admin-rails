@@ -24,9 +24,9 @@ module Motor
                                        body: request_params[:body],
                                        params: request_params[:params],
                                        headers: { 'Authorization' => "Bearer #{current_user_jwt}" })
-      response.to_hash.each do |key, (value)|
-        next if key.casecmp('transfer-encoding').zero?
-
+      response.to_hash.each do |key, (value)| 
+        next if key.downcase == 'transfer-encoding'
+          
         headers[key] = value
       end
 
